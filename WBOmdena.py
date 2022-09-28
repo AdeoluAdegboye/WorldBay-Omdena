@@ -196,42 +196,7 @@ def main():
 						st.image(image, width = 1150)
 						# uploaded_file = st.file_uploader("Choose a file")
 					
-					# if uploaded_file is not None:
-					# 	df = pd.read_csv(uploaded_file)			
-					# 	st.dataframe(df)
-						
-					# 	fsbutton = st.selectbox('Select a Feature selection Method',
-					# 	('Particle Swarm Optimization Algorithm', 'Variance Threshold','Fishers score method', 'Sequential Feature selection', 'Recursive Feature Elimination'))
-					# 	st.write('You selected:', fsbutton)
-                        	
-					# 	if fsbutton == "Particle Swarm Optimization Algorithm":
-					# 			fs = feature_sel(process_x(df), process_y(df), df)
-					# 			pso = fs.particle_swarm(process_x(df))
-					# 			df_fs = pd.DataFrame(pso)
-					# 			st.write('This is the result of the PSO Algorithm')
-					# 			st.dataframe(df_fs)
-					# 	elif fsbutton == "Variance Threshold":
-					# 		fs = feature_sel(process_x(df), process_y(df),df)
-					# 		vt = fs.VarianceT(process_x(df), df)
-					# 		df_fs = pd.DataFrame(vt)
-					# 		st.write('This is the result of the Variance Threshold Algorithm')
-					# 		st.dataframe(df_fs)
-
-					# 	# USE RADIO BUTTONS FOR CLASSIFIERS
-					# 	st.button("Conduct Classification")
-					# 	X = df_fs.to_numpy()
-					# 	y = process_y(df)
-					# 	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.3, random_state=1121218)
-					# 	forest = RandomForestRegressor(random_state=1121218)
-					# 	model = forest.fit(X_train, y_train)
-					# 	result = model.predict(X_test)
-					# 	metric = model.score(X_test, y_test)
-
-					# 	st.write('This is the result of the prediction')
-					# 	st.write(result)
-					# 	st.write('ACCURACY SCORE: ')
-					# 	st.write(metric)
-
+					
 				elif task == "Explore and gain Insights to Various Data":
 					st.header("DATA VISUALIZATIONS FOR INSIGHTS")	
 					st.subheader("Pick Up and Delivery Tasks")
