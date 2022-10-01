@@ -5,7 +5,6 @@ from PIL import Image
 import numpy as np
 import requests
 import matplotlib.pyplot as plt
-import seaborn as sns
 import time 
 from streamlit_option_menu import option_menu
 #from featuresel import feature_sel
