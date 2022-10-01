@@ -205,10 +205,6 @@ def main():
 					image = Image.open('MagMonthly.png')
 					st.image(image, width = 1150)
 					
-
-					st.write("Monthly spread of pick up and delivery trips ")
-					image = Image.open('MagMonthly.png')
-					st.image(image, width = 1150)
 					
 
 					st.write("Trips spread across top branch locations")
