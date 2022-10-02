@@ -141,7 +141,7 @@ def main():
 				st.success("Logged In as {}".format(username))
 				photo = Image.open('postlogin.jpg') 
 				st.image(photo, width = 1600)
-				task = st.selectbox("Task",["Select an option","Predict your Credit Score","Explore and gain Insights to Various Data","Explore and gain Insights to Various Data"])
+				task = st.selectbox("Task",["Select an option","Predict your Credit Score","Explore and gain Insights to Various Data","View Log in history"])
 				if task == "Select an option":
 					st.write("You can choose to input customer data and derive a CLV, or visualize uploaded datasets")
 				elif task == "Predict your Credit Score":
