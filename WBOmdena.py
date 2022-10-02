@@ -46,7 +46,7 @@ st.markdown("""
         <a class="nav-link disabled" href="#" style="margin-top:40px;">Connect on instagram <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://www.onhealth.com/content/1/breast_cancer" target="_blank" style="margin-top:40px;">Top Analytics Services</a>
+        <a class="nav-link" href="grocedy.com" target="_blank" style="margin-top:40px;">Visit Grocedy's website</a>
       </li>
       <img src="https://img.icons8.com/fluency/48/undefined/twitter.png" style="margin-top:40px">
 	  <li class="nav-item">
@@ -147,7 +147,7 @@ def main():
 				elif task == "Predict your Credit Score":
 					st.title('Customer Lifetime Value is generated via a series of inputs below')
 					st.subheader("Enter the list of Customer features")
-					NI = st.number_input('No of Invoices')
+					NI = st.number_input('Number of Invoices')
 					DSR = st.number_input('days_since_registration')
 					f = st.number_input('frequency')
 					r = st.number_input('recency')
