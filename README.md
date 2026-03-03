@@ -8,6 +8,7 @@ The majority of  users are unbanked and have no financial footprint. World Bay r
 
 This alternative credit-scoring system  will eventually allow them to offer micro-pensions, micro-loans, micro-insurance and other micro-financial services on top of the grocery package subscription that they offer currently. 
 
+Methods & Tools 
 <img width="486" height="518" alt="Screenshot 2026-03-03 at 07 39 22" src="https://github.com/user-attachments/assets/9924d7fa-500c-461b-9d44-9f1edd0e0bf2" />
 
 Modeling- ML Algorithms
