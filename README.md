@@ -1,26 +1,122 @@
-# WorldBay-Omdena
-**Credit scoring application for food subscription company serving underbanked Nigerians **
+ WorldBay Credit Scoring System
+A machine learning-powered alternative credit scoring application built for WorldBay Technologies (Grocedy), developed as part of an Omdena collaborative AI project. The system generates Customer Lifetime Value (CLV) scores for underbanked Nigerian users — enabling access to micro-financial services using behavioural payment data rather than traditional credit history.
 
-World Bay  offers a food subscription where users pay for food parcels and receive their food packages only after they have paid the full amount due. 
-The users can pay their subscription over a certain number of days (27 days). World Bay offers different tiered plans, and users can upgrade to better plans. 
+🌍 Background & Problem Statement
+WorldBay offers a food subscription service where customers pay for grocery parcels in instalments over 27 days before receiving their package. The majority of users are unbanked with no formal financial footprint, making them ineligible for traditional credit products.
+WorldBay partnered with Omdena to build an alternative credit scoring model using customers' in-app payment behaviour. The resulting scores are designed to unlock:
 
-The majority of  users are unbanked and have no financial footprint. World Bay requested for a way to equip these users by using their paying patterns with World Bay, and other factors  to build credit scores for them. 
-
-This alternative credit-scoring system  will eventually allow them to offer micro-pensions, micro-loans, micro-insurance and other micro-financial services on top of the grocery package subscription that they offer currently. 
-
-Methods & Tools 
-<img width="486" height="518" alt="Screenshot 2026-03-03 at 07 39 22" src="https://github.com/user-attachments/assets/9924d7fa-500c-461b-9d44-9f1edd0e0bf2" />
-
-Modeling- ML Algorithms
-- Random Forest
-
-SHAP analysis 
-SHAP analysis was used to gain more insight into the predictions made by the ML model. SHAP analysis was introduced by (Lundberg and Lee, 2017). This analysis enables computing how much each feature in the model has contributed to the prediction. Using coalitional game theory, shapley values are computed that help to distribute the final prediction among different features of the model. 
+🏦 Micro-loans
+🛡️ Micro-insurance
+💰 Micro-pensions
+📦 Upgraded subscription plans
 
 
-Results & Insights 
-A total of 49 engineered features were created: 43 were determinants of customer transaction behaviour, 2 were predictors of repayment behaviour, 2 were for demographics, and 4 were DateTime features. These 49 engineered features had gone through a process of feature selection, and the top five best predictors of customer CLV were: (1) prob_of_predicted_purchases_30d, (2) monetary_value, (3) prob_is_active_30d, (4) 4.91 - 180 days, and (5) cond_expected_avg_profit. 
+🏗️ Architecture
+[WorldBay Transaction Data]
+         │
+         ▼
+[Feature Engineering]          49 features engineered from raw transaction logs
+         │
+         ▼
+[Random Forest Regressor]      Trained model serialised to Final_Final.pkl
+         │
+         ▼
+[SHAP Analysis]                Feature importance and prediction explainability
+         │
+         ▼
+[Streamlit Web App]            Login-gated UI for score prediction & data insights
 
-More than 10 engineered features were added to the final model, which drastically increased the accuracy from 50% to 85%. Some features such as gender and implied marital status, were found to have a high percentage of nulls hence the features were dropped. Aside from these, it was found in the CLV modeling that around 7, 927 customers were repeating customers that have at least two transactions. 
+📁 Project Structure
+WorldBay-Omdena/
+├── WBOmdena.py             # Main Streamlit application
+├── Final_Final.pkl         # Trained Random Forest model (serialised)
+├── requirements.txt        # Python dependencies
+├── README.md
+└── assets/                 # Dashboard images and visualisations
+    ├── worldbay logo.jpg
+    ├── grocedy.jpg
+    ├── modelsummary.png
+    ├── EDA bar plot.png
+    ├── MagMonthly.png
+    ├── branches.png
+    ├── Agentsoverview.png
+    └── amounts.png
 
-With these results, it is suggested that other factors be included as features in the model such as the income level of a customer, marital status, job, gender, and education level among others. 
+⚙️ Tech Stack
+ToolPurposePython / Pandas / NumPyData processing and feature engineeringScikit-learnRandom Forest model training and predictionSHAPModel explainability and feature importanceStreamlitInteractive web applicationSQLiteLocal user authentication databasePickleModel serialisationMatplotlibData visualisations
+
+🤖 Model & Features
+Feature Engineering
+A total of 49 features were engineered from raw transaction data, grouped into four categories:
+CategoryCountExamplesTransaction behaviour43Frequency, recency, monetary value, days past dueRepayment behaviour2Probability of purchase in 30 days, active plan probabilityDemographics2Age in days, incomeDateTime4Payment terms, subscription period active
+Top 5 Predictors (by SHAP importance)
+
+prob_of_predicted_purchases_30d — Predicted purchase probability over next 30 days
+monetary_value — Value of the customer's requested loan/plan
+prob_is_active_30d — Probability of having an active plan in 30 days
+4.91 - 180 days — Activity window feature
+cond_expected_avg_profit — Expected average profit contribution
+
+Model Performance
+Adding more than 10 engineered features improved model accuracy from 50% → 85%.
+Algorithm
+
+Random Forest Regressor — selected for robustness to missing data and non-linear feature interactions
+SHAP analysis used post-training to explain individual predictions using Shapley values (Lundberg & Lee, 2017)
+
+
+🚀 Getting Started
+Prerequisites
+
+Python 3.8+
+The trained model file Final_Final.pkl (not included in repo — contact for access)
+
+Installation
+bashgit clone https://github.com/AdeoluAdegboye/WorldBay-Omdena.git
+cd WorldBay-Omdena
+pip install -r requirements.txt
+Run the App
+bashstreamlit run WBOmdena.py
+The app will open at http://localhost:8501.
+
+🖥️ Application Features
+The Streamlit app is login-gated with three main sections:
+Home — Landing page with WorldBay branding
+Predict Credit Score — Form-based input for 36 customer features; outputs a CLV score and displays a SHAP model summary chart. Input features include:
+
+Transaction behaviour (invoices, frequency, recency, monetary value)
+Subscription status and plan tier
+Payment terms and days past due date
+Probability scores for future activity
+
+Data Insights — EDA visualisations including:
+
+Pick-up and delivery task distribution (2019–2022)
+Monthly trip spread
+Top branch locations
+Agent performance overview
+Transaction amount distribution
+
+
+📊 Key Findings
+
+~7,927 customers identified as repeat customers with at least two transactions
+Features like gender and implied marital status were dropped due to high null rates
+The model significantly benefits from behavioural features over demographic ones, supporting a privacy-respecting, behaviour-first scoring approach
+
+
+💡 Potential Improvements
+
+Replace pickle with MLflow for proper model versioning and experiment tracking
+Add SHAP waterfall plots per prediction so users can see exactly why a score was generated
+Improve the input form UX — group the 36 fields into logical sections and add tooltips explaining each feature in plain language
+Replace SQLite auth with a proper auth provider (e.g. Firebase Auth or Auth0) for production use
+Add score banding — translate the raw CLV output into labelled tiers (e.g. Bronze / Silver / Gold) for easier interpretation
+Collect additional features — income level, employment status, marital status — to further improve model accuracy as suggested by the analysis
+
+
+🤝 Built With
+This project was developed collaboratively as part of an Omdena challenge — a global platform for AI engineers to solve real-world problems through collaborative projects.
+
+📬 Contact
+Adeolu Adegboye · GitHub
